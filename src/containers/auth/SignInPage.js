@@ -39,7 +39,7 @@ class SignInPage extends React.Component {
                   <h3 className="color small">NEW CUSTOMER</h3>
                   <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
                   <br />
-                  <button className="btn btn--ys btn--xl" onclick="location.href='#';"><span className="icon icon-person_add" />CREATE AN ACCOUNT</button>
+                  <button className="btn btn--ys btn--xl"><span className="icon icon-person_add" />CREATE AN ACCOUNT</button>
                 </div>
               </section>
               <div className="divider divider--md visible-sm visible-xs" />
