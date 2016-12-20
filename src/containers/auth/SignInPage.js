@@ -1,9 +1,21 @@
 import React from 'react';
-import {reduxForm} from 'redux-form';
+import {reduxForm,Field} from 'redux-form';
 
 class SignInPage extends React.Component {
 
+  constructor(props){
+    super(props);
+
+    this.formHandleSubmit= this.formHandleSubmit.bind(this);
+  }
+
+  formHandleSubmit({email,password}){
+    console.log(email, password);
+  }
   render(){
+
+    const {handleSubmit} = this.props;
+
     return(
       <div>
       <div className="breadcrumbs">
@@ -33,22 +45,22 @@ class SignInPage extends React.Component {
               <div className="divider divider--md visible-sm visible-xs" />
               <section className="col-sm-12 col-md-6 col-lg-6 col-xl-4">
                 <div className="login-form-box">
-                  <h3 className="color small">RETURNING CUSTOMER</h3>
+                  <h3 className="color small">SignIn</h3>
                   <p>
                     If you have an account with us, please log in.
                   </p>
-                  <form action="#" id="form-returning">
+                  <form onSubmit={handleSubmit(this.formHandleSubmit)} id="form-returning">
                     <div className="form-group">
                       <label htmlFor="email">Email Address <sup>*</sup></label>
-                      <input type="email" className="form-control" id="email" />
+                      <Field name="email" component="input" type="email" className="form-control" id="email" />
                     </div>
                     <div className="form-group">
                       <label htmlFor="password">Password <sup>*</sup></label>
-                      <input type="password" className="form-control" id="password" />
+                      <Field name="password" component="input" type="password" className="form-control" id="password" />
                     </div>
                     <div className="row">
                       <div className="col-xs-12 col-sm-6 col-md-6">
-                        <button type="submit" className="btn btn--ys btn-top btn--xl" onclick="document.getElementById('form-returning').submit();"><span className="icon icon-vpn_key" />Login</button>
+                        <button type="submit" className="btn btn--ys btn-top btn--xl"><span className="icon icon-vpn_key" />Login</button>
                       </div>
                       <div className="divider divider--md visible-xs" />
                       <div className="col-xs-12 col-sm-6 col-md-6">
@@ -72,8 +84,7 @@ class SignInPage extends React.Component {
 
 export default reduxForm({
 
-  form:'signin',
-  fields:['email','password']
+  form:'signin'
 
 })(SignInPage);
 
