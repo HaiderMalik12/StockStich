@@ -1,5 +1,8 @@
-import React from 'react';
+import React,{PropTypes} from 'react';
 import {reduxForm,Field} from 'redux-form';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../../actions/authActions';
 
 class SignInPage extends React.Component {
 
@@ -10,7 +13,9 @@ class SignInPage extends React.Component {
   }
 
   formHandleSubmit({email,password}){
-    console.log(email, password);
+
+    this.props.actions.login({email,password});
+
   }
   render(){
 
@@ -82,10 +87,30 @@ class SignInPage extends React.Component {
   }
 }
 
-export default reduxForm({
+SignInPage.propTypes = {
+
+  authenticated:PropTypes.bool,
+  actions:PropTypes.object.isRequired
+};
+
+function mapStateToProps(state,ownProps) {
+ return {
+   authenticated:state.authenticated
+ };
+}
+
+function mapDispatchToProps(dispatch) {
+ return {
+   actions:bindActionCreators(actions,dispatch)
+ };
+}
+
+const _SignInPage = reduxForm({
 
   form:'signin'
 
 })(SignInPage);
+
+export default connect(mapStateToProps,mapDispatchToProps)(_SignInPage);
 
 //export default SignInPage;
