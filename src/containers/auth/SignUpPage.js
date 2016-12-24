@@ -222,7 +222,7 @@ class SignUpPage extends React.Component {
   <div>
     <label>{label}</label>
     <div>
-      <input {...input} placeholder={label} type={type}/>
+      <input {...input} placeholder={label} type={type} className="form-control"/>
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
   </div>
@@ -231,18 +231,71 @@ class SignUpPage extends React.Component {
     debugger;
     const {handleSubmit, pristine, reset, submitting} = this.props;
     return (
-      <form onSubmit={handleSubmit}>
 
-        <Field name="email" type="email" component={this.renderField} label="Email"/>
-        <Field name="password" type="password" component={this.renderField} label="Password"/>
-        <Field name="passwordConfirm" type="password" component={this.renderField} label="Confirm Password"/>
-        <Field name="city" type="text" component={this.renderField} label="City"/>
-        <Field name="phone" type="text" component={this.renderField} label="Phone"/>
-        <div>
-          <button type="submit" disabled={submitting}>Submit</button>
-          <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+    <div>
+      <div className="breadcrumbs">
+        <div className="container">
+          <ol className="breadcrumb breadcrumb--ys pull-left">
+            <li className="home-link"><a href="index.html" className="icon icon-home"/></li>
+            <li className="active">Account SignUp</li>
+          </ol>
         </div>
-      </form>
+      </div>
+      <div id="pageContent">
+        <div className="container">
+
+          <div className="title-box">
+            <h1 className="text-center text-uppercase title-under">Sign Up</h1>
+          </div>
+
+          <div className="row">
+            <section
+              className=" col-sm-offset-2 col-sm-8  col-md-offset-2 col-md-8 col-lg-8 col-lg-offset-2 col-xl-4">
+              <div className="login-form-box">
+                <h3 className="color small">Sign Up</h3>
+
+                <form onSubmit={handleSubmit} id="form-returning">
+
+                  <div className="form-group">
+                    <label htmlFor="email">Email<sup>*</sup></label>
+                    <Field name="email" type="email" component={this.renderField}  id="email" />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="password">Password<sup>*</sup></label>
+                    <Field name="password" type="password" component={this.renderField} id="password"/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="passwordConfirm">Confirm Password<sup>*</sup></label>
+                    <Field name="passwordConfirm" type="password" component={this.renderField}  id="confirmPassword"/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="city">City<sup>*</sup></label>
+                    <Field name="city" type="text" component={this.renderField} id="city"/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone<sup>*</sup></label>
+                    <Field name="phone" type="text" component={this.renderField} id="phone"/>
+                  </div>
+
+
+                  <div>
+                    <button type="submit" disabled={submitting}>Submit</button>
+                    <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     );
   }
 }
