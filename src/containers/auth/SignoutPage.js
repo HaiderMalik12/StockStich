@@ -10,12 +10,16 @@ class Signout extends Component {
   };
 
   componentWillMount() {
-    debugger;
     this.props.actions.signOut();
   }
 
   componentDidMount(){
     this.context.router.push('/');
+  }
+  render(){
+    return(
+    <div>Sorry to see you go</div>
+    );
   }
 
 

@@ -169,6 +169,16 @@ const validate = values => {
     errors.city = 'Please enter your city';
   }
 
+  if(!values.firstName){
+    errors.firstName = 'Please enter your firstName';
+  }
+
+
+  if(!values.lastName){
+    errors.lastName = 'Please enter your lastName';
+  }
+
+
   if(!values.phone){
     errors.phone = 'Please enter your phone';
   }
@@ -215,20 +225,56 @@ class SignUpPage extends React.Component {
     super(props);
 
     this.renderField = this.renderField.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.renderAlert = this.renderAlert.bind(this);
+
+
+  }
+
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
+  }
+
+
+    handleFormSubmit(formProps) {
+
+      console.log(formProps);
+      // const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+      //
+      // return sleep(1000) // simulate server latency
+      //   .then(() => {
+      //     if (![ 'john', 'paul', 'george', 'ringo' ].includes(values.username)) {
+      //       throw new SubmissionError({ username: 'User does not exist', _error: 'Login failed!' });
+      //     } else if (values.password !== 'redux-form') {
+      //       throw new SubmissionError({ password: 'Wrong password', _error: 'Login failed!' });
+      //     } else {
+      //       window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
+      //     }
+      //   })
+      this.props.actions.signUp(formProps);
 
   }
 
   renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <input {...input} placeholder={label} type={type} className="form-control"/>
+
+<div>
+    <div className="form-group">
+      <label htmlFor={label}>{label}<sup>*</sup></label>
+      <input {...input} type={type} className="form-control"/>
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
-    </div>
   </div>
+<br/>
+</div>
 );
+
   render() {
-    debugger;
+
     const {handleSubmit, pristine, reset, submitting} = this.props;
     return (
 
@@ -254,32 +300,41 @@ class SignUpPage extends React.Component {
               <div className="login-form-box">
                 <h3 className="color small">Sign Up</h3>
 
-                <form onSubmit={handleSubmit} id="form-returning">
+                <form onSubmit={handleSubmit(this.handleFormSubmit)} id="form-returning">
 
-                  <div className="form-group">
-                    <label htmlFor="email">Email<sup>*</sup></label>
-                    <Field name="email" type="email" component={this.renderField}  id="email" />
+
+                    <Field name="firstName" type="text" component={this.renderField}  id="firstName" label="FirstName"/>
+
+                    <Field name="lastName" type="text" component={this.renderField}  id="lastName" label="LastName"/>
+
+
+
+                    <Field name="email" type="email" component={this.renderField}  id="email" label="Email"/>
+
+
+                    <Field name="password" type="password" component={this.renderField} id="password" label="Password"/>
+
+                    <Field name="passwordConfirm" type="password" component={this.renderField}  id="confirmPassword" label="Confirm Password"/>
+
+
+                    <Field name="city" type="text" component={this.renderField} id="city" label="Cirty"/>
+
+
+                    <Field name="phone" type="text" component={this.renderField} id="phone" label="Phone"/>
+
+
+                  {this.renderAlert()}
+
+                  <div className="row">
+                    <div className="col-xs-12 col-sm-6 col-md-6">
+                      <button type="submit" disabled={submitting} className="btn btn--ys btn-top btn--xl"><span className="icon icon-vpn_key" />Sign Up</button>
+
+                    </div>
+                    <div className="divider divider--md visible-xs" />
+                    <div className="col-xs-12 col-sm-6 col-md-6">
+                    </div>
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="password">Password<sup>*</sup></label>
-                    <Field name="password" type="password" component={this.renderField} id="password"/>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="passwordConfirm">Confirm Password<sup>*</sup></label>
-                    <Field name="passwordConfirm" type="password" component={this.renderField}  id="confirmPassword"/>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="city">City<sup>*</sup></label>
-                    <Field name="city" type="text" component={this.renderField} id="city"/>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone<sup>*</sup></label>
-                    <Field name="phone" type="text" component={this.renderField} id="phone"/>
-                  </div>
 
 
                   <div>
@@ -299,7 +354,7 @@ class SignUpPage extends React.Component {
     );
   }
 }
-debugger;
+
 const _SignUpPage = reduxForm({
   form: 'signup',  // a unique identifier for this form
   validate,                // <--- validation function given to redux-form

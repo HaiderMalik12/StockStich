@@ -10,6 +10,17 @@ class SignInPage extends React.Component {
     super(props);
 
     this.formHandleSubmit= this.formHandleSubmit.bind(this);
+    this.renderAlert = this.renderAlert.bind(this);
+  }
+
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
   }
 
   formHandleSubmit({email,password}){
@@ -33,11 +44,10 @@ class SignInPage extends React.Component {
       </div>
         <div id="pageContent">
           <div className="container">
-            {/* title */}
             <div className="title-box">
               <h1 className="text-center text-uppercase title-under">LOGIN OR CREATE AN ACCOUNT</h1>
             </div>
-            {/* /title */}
+
             <div className="row">
               <section className="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xl-offset-2">
                 <div className="login-form-box">
@@ -63,14 +73,14 @@ class SignInPage extends React.Component {
                       <label htmlFor="password">Password <sup>*</sup></label>
                       <Field name="password" component="input" type="password" className="form-control" id="password" />
                     </div>
+
+                    {this.renderAlert()}
+
                     <div className="row">
                       <div className="col-xs-12 col-sm-6 col-md-6">
                         <button type="submit" className="btn btn--ys btn-top btn--xl"><span className="icon icon-vpn_key" />Login</button>
                       </div>
                       <div className="divider divider--md visible-xs" />
-                      <div className="col-xs-12 col-sm-6 col-md-6">
-                        <div className="pull-right note btn-top">* Required Fields</div>
-                      </div>
                     </div>
                     <p className="btn-top">
                       <a className="link-color" href="#">Forgot Your Password?</a>
@@ -89,12 +99,14 @@ class SignInPage extends React.Component {
 
 SignInPage.propTypes = {
 
-  actions:PropTypes.object.isRequired
+  actions:PropTypes.object.isRequired,
+  errorMessage:PropTypes.string,
+  handleSubmit:PropTypes.func.isRequired
 };
 
-function mapStateToProps(state,ownProps) {
+function mapStateToProps(state) {
  return {
-   authenticated:state.auth
+   errorMessage:state.auth.error
  };
 }
 

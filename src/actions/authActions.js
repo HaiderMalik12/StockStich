@@ -12,6 +12,9 @@ export function login({email,password}) {
     return axios.post(`${API_URL}/account/login`,{email,password})
       .then(response => {
 
+        console.log('response');
+        console.log(response);
+
         dispatch({
           type:types.AUTH_USER
         });
@@ -23,6 +26,7 @@ export function login({email,password}) {
 
 
       }).catch(error => {
+        debugger;
         // If request is bad...
         // - Show an error to the user
         dispatch(authError('Bad Login Info'));
@@ -39,15 +43,22 @@ export function signOut() {
   return { type: types.UNAUTH_USER};
 }
 
-export function signUp({ email, password }) {
+export function signUp({ email, password,city,phone,firstName,lastName }) {
+
+
   return function(dispatch) {
-    axios.post(`${ROOT_URL}/account/signup`, { email, password })
+    axios.post(`${API_URL}/account/signup`, { email, password ,city, mobile:phone, first_name: firstName, last_name:lastName })
       .then(response => {
-        dispatch({ type: AUTH_USER });
+        dispatch({ type: types.AUTH_USER });
         localStorage.setItem('token', response.data.token);
         browserHistory.push('/dashboard');
       })
-      .catch(response => dispatch(authError(response.data.error)));
+      .catch(error => {
+        // If request is bad...
+        // - Show an error to the user
+        dispatch(authError('Invalid fields, Something went wrong'));
+      });
+
   }
 }
 export function authError(error) {
