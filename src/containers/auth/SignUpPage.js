@@ -245,28 +245,17 @@ class SignUpPage extends React.Component {
     handleFormSubmit(formProps) {
 
       console.log(formProps);
-      // const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-      //
-      // return sleep(1000) // simulate server latency
-      //   .then(() => {
-      //     if (![ 'john', 'paul', 'george', 'ringo' ].includes(values.username)) {
-      //       throw new SubmissionError({ username: 'User does not exist', _error: 'Login failed!' });
-      //     } else if (values.password !== 'redux-form') {
-      //       throw new SubmissionError({ password: 'Wrong password', _error: 'Login failed!' });
-      //     } else {
-      //       window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
-      //     }
-      //   })
+
       this.props.actions.signUp(formProps);
 
   }
 
-  renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  renderField = ({ id,input, htmlFor, label, type, meta: { touched, error, warning } }) => (
 
 <div>
     <div className="form-group">
-      <label htmlFor={label}>{label}<sup>*</sup></label>
-      <input {...input} type={type} className="form-control"/>
+      <label htmlFor={htmlFor}>{label}</label>
+      <input {...input} type={type} className="form-control" id={id}/>
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
   </div>
 <br/>
@@ -303,24 +292,19 @@ class SignUpPage extends React.Component {
                 <form onSubmit={handleSubmit(this.handleFormSubmit)} id="form-returning">
 
 
-                    <Field name="firstName" type="text" component={this.renderField}  id="firstName" label="FirstName"/>
+                    <Field name="firstName" type="text" component={this.renderField}  id="firstName" label="FirstName" htmlFor="firstName"/>
 
-                    <Field name="lastName" type="text" component={this.renderField}  id="lastName" label="LastName"/>
+                    <Field name="lastName" type="text" component={this.renderField}  id="lastName" label="LastName" htmlFor="lastName"/>
 
+                    <Field name="email" type="email" component={this.renderField}  id="email" label="Email" htmlFor="email"/>
 
+                    <Field name="password" type="password" component={this.renderField} id="password" label="Password" htmlFor="password"/>
 
-                    <Field name="email" type="email" component={this.renderField}  id="email" label="Email"/>
+                    <Field name="passwordConfirm" type="password" component={this.renderField}  id="confirmPassword" label="Confirm Password" htmlFor="confirmPassword"/>
 
+                    <Field name="city" type="text" component={this.renderField} id="city" label="City" htmlFor="city"/>
 
-                    <Field name="password" type="password" component={this.renderField} id="password" label="Password"/>
-
-                    <Field name="passwordConfirm" type="password" component={this.renderField}  id="confirmPassword" label="Confirm Password"/>
-
-
-                    <Field name="city" type="text" component={this.renderField} id="city" label="Cirty"/>
-
-
-                    <Field name="phone" type="text" component={this.renderField} id="phone" label="Phone"/>
+                    <Field name="phone" type="text" component={this.renderField} id="phone" label="Phone" htmlFor="phone"/>
 
 
                   {this.renderAlert()}
