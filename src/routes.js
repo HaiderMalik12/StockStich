@@ -9,6 +9,8 @@ import CategoryPage from './components/category-section/CategorySection';
 import SiginInPage from './containers/auth/SignInPage';
 import DashboardPage from './components/dashboard/DashboardPage';
 import Signout from './containers/auth/SignoutPage';
+import SignUpPage from './containers/auth/SignUpPage';
+
 import RequireAuthentication from './containers/auth/RequireAuthentication';
 
 
@@ -22,6 +24,7 @@ export default (
     <Route path="signin" component={SiginInPage}/>
     <Route path="dashboard" component={RequireAuthentication(DashboardPage)}/>
     <Route path="signout" component={Signout} />
+    <Route path="signup" components={SignUpPage}/>
 
 
 
