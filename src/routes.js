@@ -7,15 +7,21 @@ import AboutPage from './components/about/AboutPage';
 import ContactPage from './components/contact/ContactPage';
 import CategoryPage from './components/category-section/CategorySection';
 import SiginInPage from './containers/auth/SignInPage';
+import DashboardPage from './components/dashboard/DashboardPage';
+import Signout from './containers/auth/SignoutPage';
+import RequireAuthentication from './containers/auth/RequireAuthentication';
 
 
 export default (
   <Route path="/" component={App}>
+
     <IndexRoute component={HomePage}/>
     <Route path="about" component={AboutPage}/>
     <Route path="contact" component={ContactPage}/>
     <Route path="category/women" component={CategoryPage}/>
     <Route path="signin" component={SiginInPage}/>
+    <Route path="dashboard" component={RequireAuthentication(DashboardPage)}/>
+    <Route path="signout" component={Signout} />
 
 
 

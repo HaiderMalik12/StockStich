@@ -89,13 +89,12 @@ class SignInPage extends React.Component {
 
 SignInPage.propTypes = {
 
-  authenticated:PropTypes.bool,
   actions:PropTypes.object.isRequired
 };
 
 function mapStateToProps(state,ownProps) {
  return {
-   authenticated:state.authenticated
+   authenticated:state.auth
  };
 }
 

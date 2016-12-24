@@ -19,7 +19,7 @@ export function login({email,password}) {
         // - Save the JWT token
         localStorage.setItem('token', response.data.token);
         // - redirect to the route '/feature'
-        browserHistory.push('/feature');
+        browserHistory.push('/dashboard');
 
 
       }).catch(error => {
@@ -33,6 +33,11 @@ export function login({email,password}) {
 
 }
 
+export function signOut() {
+  localStorage.removeItem('token');
+
+  return { type: types.UNAUTH_USER};
+}
 export function authError(error) {
   return {
     type: types.AUTH_ERROR,
