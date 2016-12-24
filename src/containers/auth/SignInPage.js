@@ -3,6 +3,7 @@ import {reduxForm,Field} from 'redux-form';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/authActions';
+import {Link} from 'react-router';
 
 class SignInPage extends React.Component {
 
@@ -54,7 +55,11 @@ class SignInPage extends React.Component {
                   <h3 className="color small">NEW CUSTOMER</h3>
                   <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
                   <br />
-                  <button className="btn btn--ys btn--xl"><span className="icon icon-person_add" />CREATE AN ACCOUNT</button>
+                  <Link  to="/signup" className="btn btn--ys btn--xl">
+                    <span className="icon icon-person_add">CREATE AN ACCOUNT</span>
+                  </Link>
+
+
                 </div>
               </section>
               <div className="divider divider--md visible-sm visible-xs" />
