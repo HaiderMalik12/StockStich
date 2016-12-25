@@ -44,7 +44,7 @@ class SignInPage extends React.Component {
 
   render(){
 
-    const {handleSubmit} = this.props;
+    const {handleSubmit,submitting} = this.props;
 
     return(
       <div>
@@ -92,7 +92,7 @@ class SignInPage extends React.Component {
 
                     <div className="row">
                       <div className="col-xs-12 col-sm-6 col-md-6">
-                        <button type="submit" className="btn btn--ys btn-top btn--xl"><span className="icon icon-vpn_key" />Login</button>
+                        <button disabled={submitting} type="submit" className="btn btn--ys btn-top btn--xl"><span className="icon icon-vpn_key" />Login</button>
                       </div>
                       <div className="divider divider--md visible-xs" />
                     </div>
