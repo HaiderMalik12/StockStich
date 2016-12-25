@@ -157,64 +157,6 @@ import {bindActionCreators} from 'redux';
 import * as authActions from '../../actions/authActions';
 import SignUpCss from './SignUpPage.css';
 
-const validate = values => {
-
-  const errors = {};
-
-  if(!values.password){
-    errors.password = 'Please enter a password';
-  }
-
-  if(!values.city){
-    errors.city = 'Please enter your city';
-  }
-
-  if(!values.firstName){
-    errors.firstName = 'Please enter your firstName';
-  }
-
-
-  if(!values.lastName){
-    errors.lastName = 'Please enter your lastName';
-  }
-
-
-  if(!values.phone){
-    errors.phone = 'Please enter your phone';
-  }
-
-  if(!values.passwordConfirm){
-    errors.passwordConfirm = 'Please enter a confirm password';
-  }
-  if(values.password !== values.passwordConfirm){
-    errors.passwordConfirm = 'passwords must matched';
-  }
-
-  if (!values.email) {
-    errors.email = 'Please enter a email';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
-
-  if (!values.age) {
-    errors.age = 'Required';
-  } else if (isNaN(Number(values.age))) {
-    errors.age = 'Must be a number';
-  } else if (Number(values.age) < 18) {
-    errors.age = 'Sorry, you must be at least 18 years old';
-  }
-
-
-  return errors;
-};
-
-const warn = values => {
-  const warnings = {};
-  if (values.age < 19) {
-    warnings.age = 'Hmm, you seem a bit young...';
-  }
-  return warnings;
-};
 
 
 
@@ -320,11 +262,6 @@ class SignUpPage extends React.Component {
                   </div>
 
 
-
-                  <div>
-                    <button type="submit" disabled={submitting}>Submit</button>
-                    <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-                  </div>
                 </form>
               </div>
             </section>
@@ -339,10 +276,63 @@ class SignUpPage extends React.Component {
   }
 }
 
+const validate = values => {
+
+  const errors = {};
+
+  if(!values.password){
+    errors.password = 'Please enter a password';
+  }
+
+  if(!values.city){
+    errors.city = 'Please enter your city';
+  }
+
+  if(!values.firstName){
+    errors.firstName = 'Please enter your firstName';
+  }
+
+
+  if(!values.lastName){
+    errors.lastName = 'Please enter your lastName';
+  }
+
+
+  if(!values.phone){
+    errors.phone = 'Please enter your phone';
+  }
+
+  if(!values.passwordConfirm){
+    errors.passwordConfirm = 'Please enter a confirm password';
+  }
+  if(values.password !== values.passwordConfirm){
+    errors.passwordConfirm = 'passwords must matched';
+  }
+
+  if (!values.email) {
+    errors.email = 'Please enter a email';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
+
+
+
+
+  return errors;
+};
+
+const warn = values => {
+  const warnings = {};
+  if (values.age < 19) {
+    warnings.age = 'Hmm, you seem a bit young...';
+  }
+  return warnings;
+};
+
+
 const _SignUpPage = reduxForm({
   form: 'signup',  // a unique identifier for this form
   validate,                // <--- validation function given to redux-form
-  warn                     // <--- warning function given to redux-form
 })(SignUpPage);
 
 function mapStateToProps(state) {

@@ -307,7 +307,7 @@ class Header extends Component {
       return [
         <li key={1}><Link to="login_form.html"><span className="icon icon-person"/>My Account</Link></li>,
         <li key={2}><Link to="/dashboard"><span className="icon icon-home"/>Dashboard</Link></li>,
-        <li key={3}><Link to="/signout"><span className="icon "/>Sign Out</Link></li>,
+        <li key={3}><Link to="/signout"><span className="icon"/>Sign Out</Link></li>,
       ];
 
     } else {

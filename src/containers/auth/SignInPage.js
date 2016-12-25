@@ -29,6 +29,19 @@ class SignInPage extends React.Component {
     this.props.actions.login({email,password});
 
   }
+
+  renderField = ({ id,input, htmlFor, label, type, meta: { touched, error, warning } }) => (
+
+    <div>
+      <div className="form-group">
+        <label htmlFor={htmlFor}>{label}</label>
+        <input {...input} type={type} className="form-control" id={id}/>
+        {touched && ((error && <span className="error">{error}</span>) || (warning && <span>{warning}</span>))}
+      </div>
+      <br/>
+    </div>
+  );
+
   render(){
 
     const {handleSubmit} = this.props;
@@ -70,14 +83,10 @@ class SignInPage extends React.Component {
                     If you have an account with us, please log in.
                   </p>
                   <form onSubmit={handleSubmit(this.formHandleSubmit)} id="form-returning">
-                    <div className="form-group">
-                      <label htmlFor="email">Email Address <sup>*</sup></label>
-                      <Field name="email" component="input" type="email" className="form-control" id="email" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password">Password <sup>*</sup></label>
-                      <Field name="password" component="input" type="password" className="form-control" id="password" />
-                    </div>
+
+                    <Field name="email" type="email" component={this.renderField}  id="email" label="Email" htmlFor="email"/>
+
+                    <Field name="password" type="password" component={this.renderField} id="password" label="Password" htmlFor="password"/>
 
                     {this.renderAlert()}
 
@@ -109,6 +118,23 @@ SignInPage.propTypes = {
   handleSubmit:PropTypes.func.isRequired
 };
 
+const validate = values => {
+
+  const errors = {};
+
+  if(!values.password){
+    errors.password = 'Please enter a password';
+  }
+
+  if (!values.email) {
+    errors.email = 'Please enter a email';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
+
+  return errors;
+};
+
 function mapStateToProps(state) {
  return {
    errorMessage:state.auth.error
@@ -121,9 +147,11 @@ function mapDispatchToProps(dispatch) {
  };
 }
 
+
 const _SignInPage = reduxForm({
 
-  form:'signin'
+  form:'signin',
+  validate
 
 })(SignInPage);
 

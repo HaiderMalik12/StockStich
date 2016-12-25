@@ -12,8 +12,9 @@ export function login({email,password}) {
     return axios.post(`${API_URL}/account/login`,{email,password})
       .then(response => {
 
-        console.log('response');
-        console.log(response);
+
+        let user= response.data.user;
+        console.log(user.has_company);
 
         dispatch({
           type:types.AUTH_USER
@@ -21,12 +22,14 @@ export function login({email,password}) {
 
         // - Save the JWT token
         localStorage.setItem('token', response.data.token);
-        // - redirect to the route '/feature'
-        browserHistory.push('/dashboard');
+
+
+        debugger;
+        user.has_company === true ? browserHistory.push('/dashboard'):  browserHistory.push('/');
+
 
 
       }).catch(error => {
-        debugger;
         // If request is bad...
         // - Show an error to the user
         dispatch(authError('Bad Login Info'));
