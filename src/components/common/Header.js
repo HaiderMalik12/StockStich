@@ -299,6 +299,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import MainLogo from './MainLogo';
 
+
 class Header extends Component {
 
   renderLinks() {
@@ -324,6 +325,8 @@ class Header extends Component {
 
       <div className="header-wrapper">
         <header id="header">
+
+
           <div className="container">
             <div className="row">
               <MainLogo/>
@@ -441,6 +444,7 @@ class Header extends Component {
               </div>
             </div>
           </div>
+
         </header>
       </div>
     );

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from  'redux';
 import * as actions from '../../actions/authActions';
 
+
 class Signout extends Component {
 
   static contextTypes = {

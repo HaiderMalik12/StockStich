@@ -166,7 +166,6 @@ class SignUpPage extends React.Component {
 
     super(props);
 
-    this.renderField = this.renderField.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.renderAlert = this.renderAlert.bind(this);
 

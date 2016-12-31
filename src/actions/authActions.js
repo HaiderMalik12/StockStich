@@ -24,7 +24,6 @@ export function login({email,password}) {
         localStorage.setItem('token', response.data.token);
 
 
-        debugger;
         user.has_company === true ? browserHistory.push('/dashboard'):  browserHistory.push('/');
 
 
