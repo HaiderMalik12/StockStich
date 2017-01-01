@@ -1,5 +1,5 @@
 {
-  "name": "react-slingshot",
+  "name": "SevenBazar",
   "version": "5.0.0",
   "description": "Starter kit for creating apps with React and Redux",
   "engines": {
@@ -72,8 +72,10 @@
     "html-webpack-plugin": "2.24.0",
     "isparta": "4.0.0",
     "istanbul": "0.4.4",
-    "json-loader": "0.5.4",
     "jsdom": "8.5.0",
+    "json-loader": "0.5.4",
+    "less": "2.7.1",
+    "less-loader": "2.2.3",
     "mocha": "3.1.2",
     "mockdate": "1.0.4",
     "node-sass": "3.10.1",
@@ -88,6 +90,7 @@
     "sass-loader": "4.0.2",
     "sinon": "1.17.6",
     "sinon-chai": "2.8.0",
+    "strip-loader": "0.1.2",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.13.2",

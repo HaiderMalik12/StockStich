@@ -47,8 +47,21 @@ export default {
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
-      {test: /(\.css|\.scss)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap']},
-      {test: /\.json$/, loader: "json"}
+       // {test: /(\.css|\.scss)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap']},
+      //{ test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: "style-loader!css-loader"
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: "style-loader!css-loader!sass-loader"
+      },
+      {test: /\.json$/, loader: "json"},
+      {test: /\.less$/, exclude: /node_modules/, loader: "style-loader!css-loader!less-loader"
+      }
     ]
   },
   postcss: ()=> [autoprefixer]

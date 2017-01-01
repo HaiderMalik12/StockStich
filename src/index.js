@@ -6,6 +6,7 @@ import {Router, browserHistory} from 'react-router';
 import routes from './routes';
 import {AUTH_USER} from './constants/actionTypes';
 
+
 import configureStore from './store/configureStore';
 
 const store = configureStore();

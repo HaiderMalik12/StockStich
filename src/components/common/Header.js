@@ -297,7 +297,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import MainLogo from './MainLogo';
 
 
 class Header extends Component {
@@ -329,7 +328,6 @@ class Header extends Component {
 
           <div className="container">
             <div className="row">
-              <MainLogo/>
               <div className="col-sm-8 col-md-8 col-lg-6 col-xl-5 text-right">
                 <div className="text-right">
                   {/* search start */}

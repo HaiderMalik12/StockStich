@@ -2,8 +2,8 @@ import React, {PropTypes} from  'react';
 
 import Header from './common/Header';
 import Footer from './common/Footer';
-import DashboardHeader from './dashboard/DashboardHeader';
-import DashboardFooter from './dashboard/DashboardFooter';
+
+import DashboardPage from './dashboard/DashboardPage';
 
 
 class App extends React.Component {
@@ -13,46 +13,37 @@ class App extends React.Component {
 
     const path = this.props.location.pathname;
 
-    switch (path) {
+    if (path === '/dashboard') {
 
-      case '/':
-        return (
-          <div className="container-fluid">
-            <Header/>
-            {this.props.children}
-            <br/>
-            <br/>
-            <br/>
-            <hr/>
-            <Footer/>
-          </div>
-        );
-      case '/dashboard':
-        return (
-          <div className="container-fluid">
-            <DashboardHeader/>
-            {this.props.children}
-            <br/>
-            <br/>
-            <br/>
-            <hr/>
-            <DashboardFooter/>
-          </div>
-        );
+      return <DashboardPage/>
 
+    }
+    else {
+
+      return (
+        <div className="container-fluid">
+          <Header/>
+          {this.props.children}
+          <br/>
+          <br/>
+          <br/>
+          <hr/>
+          <Footer/>
+        </div>
+      );
     }
 
   }
 
   render() {
 
-   return this.renderContent();
+    return this.renderContent();
 
   }
 }
 
 App.propTypes = {
-  children:PropTypes.object.isRequired
+  children: PropTypes.object.isRequired
 };
 
 
