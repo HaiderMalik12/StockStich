@@ -7,7 +7,10 @@ import routes from './routes';
 import {AUTH_USER} from './constants/actionTypes';
 import configureStore from './store/configureStore';
 
-//Vendor Css
+require('./assets/admin/sass/theme.scss');
+
+
+// //Vendor Css
 require('./assets/vendor/bootstrap/css/bootstrap.css');
 require('./assets/vendor/font-awesome/css/font-awesome.css');
 require('./assets/vendor/simple-line-icons/css/simple-line-icons.css');

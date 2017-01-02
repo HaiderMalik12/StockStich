@@ -49,24 +49,10 @@ class SignInPage extends React.Component {
     const {handleSubmit, submitting} = this.props;
 
     return (
-      <div className="main" role="main">
-        <section className="page-header">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <ul className="breadcrumb">
-                  <li><a href="#">Home</a></li>
-                  <li className="active">Pages</li>
-                </ul>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <h1>Login</h1>
-              </div>
-            </div>
-          </div>
-        </section>
+
+      <div id="signin-header">
+
+
 
 
         <div className="container">
@@ -120,8 +106,71 @@ class SignInPage extends React.Component {
         </div>
 
 
-      </div>
+      {/*</div>*/}
 
+    {/*<section className="body-sign">*/}
+      {/*<div className="center-sign">*/}
+        {/*<a href="/" className="logo pull-left">*/}
+          {/*<img src="assets/admin/images/logo.png" height={54} alt="Porto Admin" />*/}
+        {/*</a>*/}
+        {/*<div className="panel panel-sign">*/}
+          {/*<div className="panel-title-sign mt-xl text-right">*/}
+            {/*<h2 className="title text-uppercase text-weight-bold m-none"><i className="fa fa-user mr-xs" /> Sign In</h2>*/}
+          {/*</div>*/}
+          {/*<div className="panel-body">*/}
+            {/*<form action="index.html" method="post">*/}
+              {/*<div className="form-group mb-lg">*/}
+                {/*<label>Username</label>*/}
+                {/*<div className="input-group input-group-icon">*/}
+                  {/*<input name="username" type="text" className="form-control input-lg" />*/}
+                  {/*<span className="input-group-addon">*/}
+                      {/*<span className="icon icon-lg">*/}
+                        {/*<i className="fa fa-user" />*/}
+                      {/*</span>*/}
+                    {/*</span>*/}
+                {/*</div>*/}
+              {/*</div>*/}
+              {/*<div className="form-group mb-lg">*/}
+                {/*<div className="clearfix">*/}
+                  {/*<label className="pull-left">Password</label>*/}
+                  {/*<a href="pages-recover-password.html" className="pull-right">Lost Password?</a>*/}
+                {/*</div>*/}
+                {/*<div className="input-group input-group-icon">*/}
+                  {/*<input name="pwd" type="password" className="form-control input-lg" />*/}
+                  {/*<span className="input-group-addon">*/}
+                      {/*<span className="icon icon-lg">*/}
+                        {/*<i className="fa fa-lock" />*/}
+                      {/*</span>*/}
+                    {/*</span>*/}
+                {/*</div>*/}
+              {/*</div>*/}
+              {/*<div className="row">*/}
+                {/*<div className="col-sm-8">*/}
+                  {/*<div className="checkbox-custom checkbox-default">*/}
+                    {/*<input id="RememberMe" name="rememberme" type="checkbox" />*/}
+                    {/*<label htmlFor="RememberMe">Remember Me</label>*/}
+                  {/*</div>*/}
+                {/*</div>*/}
+                {/*<div className="col-sm-4 text-right">*/}
+                  {/*<button type="submit" className="btn btn-primary hidden-xs">Sign In</button>*/}
+                  {/*<button type="submit" className="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>*/}
+                {/*</div>*/}
+              {/*</div>*/}
+              {/*<span className="mt-lg mb-lg line-thru text-center text-uppercase">*/}
+                  {/*<span>or</span>*/}
+                {/*</span>*/}
+              {/*<div className="mb-xs text-center">*/}
+                {/*<a className="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i className="fa fa-facebook" /></a>*/}
+                {/*<a className="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i className="fa fa-twitter" /></a>*/}
+              {/*</div>*/}
+              {/*<p className="text-center">Don't have an account yet? <a href="pages-signup.html">Sign Up!</a>*/}
+              {/*</p></form>*/}
+          {/*</div>*/}
+        {/*</div>*/}
+        {/*<p className="text-center text-muted mt-md mb-md">© Copyright 2014. All Rights Reserved.</p>*/}
+      {/*</div>*/}
+    {/*</section>*/}
+      </div>
     );
   }
 }
