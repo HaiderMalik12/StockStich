@@ -5,6 +5,7 @@ import Footer from './common/Footer';
 
 import DashboardPage from './dashboard/DashboardPage';
 
+import $ from 'jquery';
 
 class App extends React.Component {
 

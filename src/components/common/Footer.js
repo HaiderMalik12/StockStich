@@ -3,119 +3,91 @@ import React from 'react';
 const Footer = () => {
 
 
-      return (
+  return (
 
-        <footer>
-          {/* footer-data */}
-          <div className="container inset-bottom-60">
-            <div className="row">
-              <div className="col-sm-12 col-md-5 col-lg-6 border-sep-right">
-                <div className="footer-logo hidden-xs">
-                  {/*  Logo  */}
-                  <a className="logo" href="index.html"> <img className="replace-2x" src="assets/images/logo.png" alt="YOURStore" /> </a>
-                  {/* /Logo */}
-                </div>
-                <div className="box-about">
-                  <div className="mobile-collapse">
-                    <h4 className="mobile-collapse__title visible-xs">ABOUT US</h4>
-                    <div className="mobile-collapse__content">
-                      <p> No more need to look for other ecommerce themes. We provide huge number of different layouts. Yourstore comes packed with free and useful features developed to make your website creation easier. Innovative clean design, advanced functionality, UI made for humans, extensive documenta- tion and support i continue this list infinitely... </p>
-                    </div>
-                  </div>
-                </div>
-                {/* subscribe-box */}
-                <div className="subscribe-box offset-top-20">
-                  <div className="mobile-collapse">
-                    <h4 className="mobile-collapse__title">NEWSLETTER SIGNUP</h4>
-                    <div className="mobile-collapse__content">
-                      <form className="form-inline">
-                        <input className="subscribe-form__input" type="text" name="subscribe" />
-                        <button type="submit" className="btn btn--ys btn--xl">SUBSCRIBE</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                {/* /subscribe-box */}
+    <footer id="footer">
+      <div className="container">
+        <div className="row">
+          <div className="footer-ribbon">
+            <span>Get in Touch</span>
+          </div>
+          <div className="col-md-3">
+            <div className="newsletter">
+              <h4>Newsletter</h4>
+              <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our
+                newsletter.</p>
+              <div className="alert alert-success hidden" id="newsletterSuccess">
+                <strong>Success!</strong> You've been added to our email list.
               </div>
-              <div className="col-sm-12 col-md-7 col-lg-6 border-sep-left">
-                <div className="row">
-                  <div className="col-sm-4">
-                    <div className="mobile-collapse">
-                      <h4 className="text-left  title-under  mobile-collapse__title">INFORMATION</h4>
-                      <div className="v-links-list mobile-collapse__content">
-                        <ul>
-                          <li><a href="about.html">About Us</a></li>
-                          <li><a href="support-24.html">Customer Service</a></li>
-                          <li><a href="faq.html">Privacy Policy</a></li>
-                          <li><a href="site-map.html">Site Map</a></li>
-                          <li><a href="typography.html">Search Terms</a></li>
-                          <li><a href="warranty.html">Advanced Search</a></li>
-                          <li><a href="delivery-page.html">Orders and Returns</a></li>
-                          <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-4">
-                    <div className="mobile-collapse">
-                      <h4 className="text-left  title-under  mobile-collapse__title">WHY BUY FROM US</h4>
-                      <div className="v-links-list mobile-collapse__content">
-                        <ul>
-                          <li><a href="warranty.html">Shipping &amp; Returns</a></li>
-                          <li><a href="typography.html">Secure Shopping</a></li>
-                          <li><a href="about.html">International Shipping</a></li>
-                          <li><a href="delivery-page.html">Affiliates</a></li>
-                          <li><a href="support-24.html">Group Sales</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-4">
-                    <div className="mobile-collapse">
-                      <h4 className="text-left  title-under  mobile-collapse__title">MY ACCOUNT</h4>
-                      <div className="v-links-list mobile-collapse__content">
-                        <ul>
-                          <li><a href="login_form.html">Sign In</a></li>
-                          <li><a href="shopping_cart.html">View Cart</a></li>
-                          <li><a href="wishlist.html">My Wishlist</a></li>
-                          <li><a href="support-24.html">Track My Order</a></li>
-                          <li><a href="faq.html">Help</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+              <div className="alert alert-danger hidden" id="newsletterError"/>
+              <form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
+                <div className="input-group">
+                  <input className="form-control" placeholder="Email Address" name="newsletterEmail"
+                         id="newsletterEmail" type="text"/>
+                  <span className="input-group-btn">
+                      <button className="btn btn-default" type="submit">Go!</button>
+                    </span>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
-          {/* /footer-data */}
-          <div className="divider divider-md visible-xs visible-sm visible-md" />
-          {/* social-icon */}
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="social-links social-links--large">
-                  <ul>
-                    <li><a className="icon fa fa-facebook" href="http://www.facebook.com/" /></li>
-                    <li><a className="icon fa fa-twitter" href="http://www.twitter.com/" /></li>
-                    <li><a className="icon fa fa-google-plus" href="http://www.google.com/" /></li>
-                    <li><a className="icon fa fa-instagram" href="https://instagram.com/" /></li>
-                    <li><a className="icon fa fa-youtube-square" href="https://www.youtube.com/" /></li>
-                  </ul>
-                </div>
-              </div>
+          <div className="col-md-3">
+            <h4>Latest Tweets</h4>
+            <div id="tweet" className="twitter" data-plugin-tweets
+                 data-plugin-options="{&quot;username&quot;: &quot;&quot;, &quot;count&quot;: 2}">
+              <p>Please wait...</p>
             </div>
           </div>
-          {/* /social-icon */}
-          {/* footer-copyright */}
-          <div className="container footer-copyright">
-            <div className="row">
-              <div className="col-lg-12"> <a href="index.html"><span>Your</span>Store</a> © 2016 . All Rights Reserved. </div>
+          <div className="col-md-4">
+            <div className="contact-details">
+              <h4>Contact Us</h4>
+              <ul className="contact">
+                <li><p><i className="fa fa-map-marker"/> <strong>Address:</strong> 1234 Street Name, City Name, United
+                  States</p></li>
+                <li><p><i className="fa fa-phone"/> <strong>Phone:</strong> (123) 456-789</p></li>
+                <li><p><i className="fa fa-envelope"/> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a>
+                </p></li>
+              </ul>
             </div>
           </div>
-          {/* /footer-copyright */}
-          <a href="#" className="btn btn--ys btn--full visible-xs" id="backToTop">Back to top <span className="icon icon-expand_less" /></a>
-        </footer>
+          <div className="col-md-2">
+            <h4>Follow Us</h4>
+            <ul className="social-icons">
+              <li className="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i
+                className="fa fa-facebook"/></a></li>
+              <li className="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i
+                className="fa fa-twitter"/></a></li>
+              <li className="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i
+                className="fa fa-linkedin"/></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="footer-copyright">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-1">
+              <a href="index.html" className="logo">
+                <img alt="Porto Website Template" className="img-responsive" src="assets/img/logo-footer.png"/>
+              </a>
+            </div>
+            <div className="col-md-7">
+              <p>© Copyright 2015. All Rights Reserved.</p>
+            </div>
+            <div className="col-md-4">
+              <nav id="sub-menu">
+                <ul>
+                  <li><a href="page-faq.html">FAQ's</a></li>
+                  <li><a href="sitemap.html">Sitemap</a></li>
+                  <li><a href="contact-us.html">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
 
   );
 };
