@@ -8,6 +8,7 @@ import SignUpPage from '../../containers/auth/SignInPage';
 class Header extends Component {
 
   renderLinks() {
+
     if (this.props.authenticated) {
 
       return(
@@ -23,7 +24,6 @@ class Header extends Component {
         </li>
       );
 
-
     }
 
 
@@ -37,6 +37,7 @@ class Header extends Component {
   }
 
   render() {
+    console.log(localStorage.getItem('token'));
     return (
       <header id="header"
               data-plugin-options="{&quot;stickyEnabled&quot;: true, &quot;stickyEnableOnBoxed&quot;: true, &quot;stickyEnableOnMobile&quot;: true, &quot;stickyStartAt&quot;: 57, &quot;stickySetTop&quot;: &quot;-57px&quot;, &quot;stickyChangeLogo&quot;: true}">

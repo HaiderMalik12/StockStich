@@ -18,3 +18,21 @@ dashboard page
  
 
 ```
+
+Task 2: Decode jwt token and show the current logged in
+user to home page
+
+### Pseudo Code
+
+
+```js
+ 
+ //extract the jwt token
+ 
+ //decode the jwt token
+ 
+ //extract first name from email
+ 
+ //replace the My Account with user firstName
+ 
+```
