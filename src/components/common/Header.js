@@ -2,37 +2,52 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
+import SignInPage from '../../containers/auth/SignInPage';
+import SignUpPage from '../../containers/auth/SignInPage';
 
 class Header extends Component {
 
   renderLinks() {
     if (this.props.authenticated) {
 
-      return [
-        <li key={1}><Link to="login_form.html"><span className="icon icon-person"/>My Account</Link></li>,
-        <li key={2}><Link to="/dashboard"><span className="icon icon-home"/>Dashboard</Link></li>,
-        <li key={3}><Link to="/signout"><span className="icon"/>Sign Out</Link></li>,
-      ];
+      return(
+        <li className="dropdown">
+          <a className="dropdown-toggle" href="#">
+            My Account
+          </a>
+          <ul className="dropdown-menu">
+            <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link href="/signout">Sign Out</Link></li>
 
-    } else {
+          </ul>
+        </li>
+      );
+
+
+    }
+
+
+     else {
 
       return [
-        <li key={4}><Link to="/signin"><span className="icon icon-lock"/>Log In</Link></li>,
-        <li key={5}><Link to="/signup"><span className="icon icon-person_add"/>Create an account</Link></li>
+        <li><Link to="/signin"><i className="fa fa-user"/> Sign In<i className="fa fa-caret-down"/></Link></li>,
+        <li><Link to="/signup"><i className="fa fa-user"/> Sign Up<i className="fa fa-caret-down"/></Link></li>
       ];
     }
   }
 
   render() {
     return (
-      <header id="header" data-plugin-options="{&quot;stickyEnabled&quot;: true, &quot;stickyEnableOnBoxed&quot;: true, &quot;stickyEnableOnMobile&quot;: true, &quot;stickyStartAt&quot;: 57, &quot;stickySetTop&quot;: &quot;-57px&quot;, &quot;stickyChangeLogo&quot;: true}">
+      <header id="header"
+              data-plugin-options="{&quot;stickyEnabled&quot;: true, &quot;stickyEnableOnBoxed&quot;: true, &quot;stickyEnableOnMobile&quot;: true, &quot;stickyStartAt&quot;: 57, &quot;stickySetTop&quot;: &quot;-57px&quot;, &quot;stickyChangeLogo&quot;: true}">
         <div className="header-body">
           <div className="header-container container">
             <div className="header-row">
               <div className="header-column">
                 <div className="header-logo">
                   <a href="index.html">
-                    <img alt="Porto" width={111} height={54} data-sticky-width={82} data-sticky-height={40} data-sticky-top={33} src="assets/img/logo.png" />
+                    <img alt="Porto" width={111} height={54} data-sticky-width={82} data-sticky-height={40}
+                         data-sticky-top={33} src="assets/img/logo.png"/>
                   </a>
                 </div>
               </div>
@@ -41,9 +56,9 @@ class Header extends Component {
                   <div className="header-search hidden-xs">
                     <form id="searchForm" action="page-search-results.html" method="get">
                       <div className="input-group">
-                        <input type="text" className="form-control" name="q" id="q" placeholder="Search..." required />
+                        <input type="text" className="form-control" name="q" id="q" placeholder="Search..." required/>
                         <span className="input-group-btn">
-                          <button className="btn btn-default" type="submit"><i className="fa fa-search" /></button>
+                          <button className="btn btn-default" type="submit"><i className="fa fa-search"/></button>
                         </span>
                       </div>
                     </form>
@@ -51,27 +66,24 @@ class Header extends Component {
                   <nav className="header-nav-top">
                     <ul className="nav nav-pills">
                       <li className="hidden-xs">
-                        <a href="about-us.html"><i className="fa fa-angle-right" /> About Us</a>
+                        <a href="about-us.html"><i className="fa fa-angle-right"/> About Us</a>
                       </li>
                       <li className="hidden-xs">
-                        <a href="contact-us.html"><i className="fa fa-angle-right" /> Contact Us</a>
+                        <a href="contact-us.html"><i className="fa fa-angle-right"/> Contact Us</a>
                       </li>
                       <li>
-                        <span className="ws-nowrap"><i className="fa fa-phone" /> (123) 456-789</span>
+                        <span className="ws-nowrap"><i className="fa fa-phone"/> (123) 456-789</span>
                       </li>
                     </ul>
                   </nav>
                 </div>
                 <div className="header-row">
                   <div className="header-nav">
-                    <button className="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
-                      <i className="fa fa-bars" />
+                    <button className="btn header-btn-collapse-nav" data-toggle="collapse"
+                            data-target=".header-nav-main">
+                      <i className="fa fa-bars"/>
                     </button>
-                    <ul className="header-social-icons social-icons hidden-xs">
-                      <li className="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i className="fa fa-facebook" /></a></li>
-                      <li className="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i className="fa fa-twitter" /></a></li>
-                      <li className="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i className="fa fa-linkedin" /></a></li>
-                    </ul>
+
                     <div className="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse">
                       <nav>
                         <ul className="nav nav-pills" id="mainNav">
@@ -93,11 +105,21 @@ class Header extends Component {
                               <li className="dropdown-submenu">
                                 <a href="index-classic.html">Classic</a>
                                 <ul className="dropdown-menu">
-                                  <li><a href="index-classic.html" data-thumb-preview="img/previews/preview-classic.jpg">Classic - Original <span className="tip tip-dark">hot</span></a></li>
-                                  <li><a href="index-classic-color.html" data-thumb-preview="img/previews/preview-classic-color.jpg">Classic - Color</a></li>
-                                  <li><a href="index-classic-light.html" data-thumb-preview="img/previews/preview-classic-light.jpg">Classic - Light</a></li>
-                                  <li><a href="index-classic-video.html" data-thumb-preview="img/previews/preview-classic-video.jpg">Classic - Video</a></li>
-                                  <li><a href="index-classic-video-light.html" data-thumb-preview="img/previews/preview-classic-video-light.jpg">Classic - Video - Light</a></li>
+                                  <li><a href="index-classic.html"
+                                         data-thumb-preview="img/previews/preview-classic.jpg">Classic - Original <span
+                                    className="tip tip-dark">hot</span></a></li>
+                                  <li><a href="index-classic-color.html"
+                                         data-thumb-preview="img/previews/preview-classic-color.jpg">Classic - Color</a>
+                                  </li>
+                                  <li><a href="index-classic-light.html"
+                                         data-thumb-preview="img/previews/preview-classic-light.jpg">Classic - Light</a>
+                                  </li>
+                                  <li><a href="index-classic-video.html"
+                                         data-thumb-preview="img/previews/preview-classic-video.jpg">Classic - Video</a>
+                                  </li>
+                                  <li><a href="index-classic-video-light.html"
+                                         data-thumb-preview="img/previews/preview-classic-video-light.jpg">Classic -
+                                    Video - Light</a></li>
                                 </ul>
                               </li>
                               <li className="dropdown-submenu">
@@ -106,24 +128,46 @@ class Header extends Component {
                                   <li className="dropdown-submenu">
                                     <a href="#">Corporate - Versions <span className="tip tip-dark">hot</span></a>
                                     <ul className="dropdown-menu">
-                                      <li><a href="index-corporate.html" data-thumb-preview="img/previews/preview-corporate.jpg">Corporate - Version 1</a></li>
-                                      <li><a href="index-corporate-2.html" data-thumb-preview="img/previews/preview-corporate-version2.jpg">Corporate - Version 2</a></li>
-                                      <li><a href="index-corporate-3.html" data-thumb-preview="img/previews/preview-corporate-version3.jpg">Corporate - Version 3</a></li>
-                                      <li><a href="index-corporate-4.html" data-thumb-preview="img/previews/preview-corporate-version4.jpg">Corporate - Version 4</a></li>
-                                      <li><a href="index-corporate-5.html" data-thumb-preview="img/previews/preview-corporate-version5.jpg">Corporate - Version 5</a></li>
-                                      <li><a href="index-corporate-6.html" data-thumb-preview="img/previews/preview-corporate-version6.jpg">Corporate - Version 6</a></li>
-                                      <li><a href="index-corporate-7.html" data-thumb-preview="img/previews/preview-corporate-version7.jpg">Corporate - Version 7</a></li>
-                                      <li><a href="index-corporate-8.html" data-thumb-preview="img/previews/preview-corporate-version8.jpg">Corporate - Version 8</a></li>
+                                      <li><a href="index-corporate.html"
+                                             data-thumb-preview="img/previews/preview-corporate.jpg">Corporate - Version
+                                        1</a></li>
+                                      <li><a href="index-corporate-2.html"
+                                             data-thumb-preview="img/previews/preview-corporate-version2.jpg">Corporate
+                                        - Version 2</a></li>
+                                      <li><a href="index-corporate-3.html"
+                                             data-thumb-preview="img/previews/preview-corporate-version3.jpg">Corporate
+                                        - Version 3</a></li>
+                                      <li><a href="index-corporate-4.html"
+                                             data-thumb-preview="img/previews/preview-corporate-version4.jpg">Corporate
+                                        - Version 4</a></li>
+                                      <li><a href="index-corporate-5.html"
+                                             data-thumb-preview="img/previews/preview-corporate-version5.jpg">Corporate
+                                        - Version 5</a></li>
+                                      <li><a href="index-corporate-6.html"
+                                             data-thumb-preview="img/previews/preview-corporate-version6.jpg">Corporate
+                                        - Version 6</a></li>
+                                      <li><a href="index-corporate-7.html"
+                                             data-thumb-preview="img/previews/preview-corporate-version7.jpg">Corporate
+                                        - Version 7</a></li>
+                                      <li><a href="index-corporate-8.html"
+                                             data-thumb-preview="img/previews/preview-corporate-version8.jpg">Corporate
+                                        - Version 8</a></li>
                                     </ul>
                                   </li>
-                                  <li><a href="index-corporate-hosting.html" data-thumb-preview="img/previews/preview-corporate-hosting.jpg">Corporate - Hosting</a></li>
-                                  <li><a href="index-corporate-digital-agency.html" data-thumb-preview="img/previews/preview-corporate-digital-agency.jpg">Corporate - Digital Agency <span className="tip">new</span></a></li>
+                                  <li><a href="index-corporate-hosting.html"
+                                         data-thumb-preview="img/previews/preview-corporate-hosting.jpg">Corporate -
+                                    Hosting</a></li>
+                                  <li><a href="index-corporate-digital-agency.html"
+                                         data-thumb-preview="img/previews/preview-corporate-digital-agency.jpg">Corporate
+                                    - Digital Agency <span className="tip">new</span></a></li>
                                 </ul>
                               </li>
                               <li className="dropdown-submenu">
                                 <a href="#">One Page</a>
                                 <ul className="dropdown-menu">
-                                  <li><a href="index-one-page.html" data-thumb-preview="img/previews/preview-one-page.jpg">One Page Original</a></li>
+                                  <li><a href="index-one-page.html"
+                                         data-thumb-preview="img/previews/preview-one-page.jpg">One Page Original</a>
+                                  </li>
                                 </ul>
                               </li>
                             </ul>
@@ -205,7 +249,8 @@ class Header extends Component {
                                     <a href="#">Default</a>
                                     <ul className="dropdown-menu">
                                       <li><a href="index-classic.html">Default</a></li>
-                                      <li><a href="index-header-language-dropdown.html">Default + Language Dropdown</a></li>
+                                      <li><a href="index-header-language-dropdown.html">Default + Language Dropdown</a>
+                                      </li>
                                       <li><a href="index-header-big-logo.html">Default + Big Logo</a></li>
                                     </ul>
                                   </li>
@@ -214,8 +259,10 @@ class Header extends Component {
                                     <ul className="dropdown-menu">
                                       <li><a href="index-header-flat.html">Flat</a></li>
                                       <li><a href="index-header-flat-top-bar.html">Flat + Top Bar</a></li>
-                                      <li><a href="index-header-flat-colored-top-bar.html">Flat + Colored Top Bar</a></li>
-                                      <li><a href="index-header-flat-top-bar-search.html">Flat + Top Bar with Search</a></li>
+                                      <li><a href="index-header-flat-colored-top-bar.html">Flat + Colored Top Bar</a>
+                                      </li>
+                                      <li><a href="index-header-flat-top-bar-search.html">Flat + Top Bar with Search</a>
+                                      </li>
                                     </ul>
                                   </li>
                                   <li><a href="index-header-center.html">Center</a></li>
@@ -227,9 +274,11 @@ class Header extends Component {
                                     <a href="#">Transparent</a>
                                     <ul className="dropdown-menu">
                                       <li><a href="index-header-transparent.html">Transparent</a></li>
-                                      <li><a href="index-header-transparent-bottom-border.html">Transparent - Bottom Border</a></li>
+                                      <li><a href="index-header-transparent-bottom-border.html">Transparent - Bottom
+                                        Border</a></li>
                                       <li><a href="index-header-semi-transparent.html">Semi Transparent</a></li>
-                                      <li><a href="index-header-semi-transparent-light.html">Semi Transparent - Light</a></li>
+                                      <li><a href="index-header-semi-transparent-light.html">Semi Transparent -
+                                        Light</a></li>
                                     </ul>
                                   </li>
                                   <li><a href="index-header-full-width.html">Full-Width</a></li>
@@ -296,7 +345,8 @@ class Header extends Component {
                                 </ul>
                               </li>
                               <li className="dropdown-submenu">
-                                <a href="#">Admin Extension <span className="tip tip-dark">hot</span> <em className="not-included">(Not Included)</em></a>
+                                <a href="#">Admin Extension <span className="tip tip-dark">hot</span> <em
+                                  className="not-included">(Not Included)</em></a>
                                 <ul className="dropdown-menu">
                                   <li><a href="feature-admin-forms-basic.html">Forms Basic</a></li>
                                   <li><a href="feature-admin-forms-advanced.html">Forms Advanced</a></li>
@@ -391,20 +441,7 @@ class Header extends Component {
                               <li><a href="page-login.html">Login / Register</a></li>
                             </ul>
                           </li>
-                          <li className="dropdown">
-                            <a className="dropdown-toggle" href="#">
-                              Portfolio
-                            </a>
-                            <ul className="dropdown-menu">
-                              <li><a href="portfolio-4-columns.html">4 Columns</a></li>
-                              <li><a href="portfolio-3-columns.html">3 Columns</a></li>
-                              <li><a href="portfolio-2-columns.html">2 Columns</a></li>
-                              <li><a href="portfolio-lightbox.html">Portfolio Lightbox</a></li>
-                              <li><a href="portfolio-timeline.html">Portfolio Timeline</a></li>
-                              <li><a href="portfolio-full-width.html">Portfolio Full Width</a></li>
-                              <li><a href="portfolio-single-project.html">Single Project</a></li>
-                            </ul>
-                          </li>
+
                           <li className="dropdown">
                             <a className="dropdown-toggle" href="#">
                               About Us
@@ -424,6 +461,24 @@ class Header extends Component {
                               <li><a href="contact-us-advanced.php">Contact Us - Advanced</a></li>
                             </ul>
                           </li>
+                          {/*SignIn*/}
+                          {/*<li>*/}
+                            {/*<Link to="/signin">*/}
+                              {/*<i className="fa fa-user"/> Sign In*/}
+                              {/*<i className="fa fa-caret-down"/></Link>*/}
+
+                          {/*</li>*/}
+
+                          {/*<li>*/}
+                            {/*<Link to="/signup">*/}
+                              {/*<i className="fa fa-user"/> Sign Up*/}
+                              {/*<i className="fa fa-caret-down"/></Link>*/}
+
+                          {/*</li>*/}
+
+                          {this.renderLinks()}
+
+
                         </ul>
                       </nav>
                     </div>
